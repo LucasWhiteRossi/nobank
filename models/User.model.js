@@ -11,8 +11,9 @@ const userSchema = new Schema({
   },
   passwordHash: { type: String, required: true },
   role: { type: String, enum: ["ADMIN", "USER"], default: "USER" },
+  accounts: [{type: mongoose.Types.ObjectId, ref: "Account"}],
   isActive: { type: Boolean, default: true },
-  disabledOn: { type: Date },
+  disabledOn: { type: Date }
 });
 
 const UserModel = model("User", userSchema);
